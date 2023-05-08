@@ -5,11 +5,13 @@
         "es2021": true
     },
     "extends": "airbnb-base",
-    "overrides": [
-    ],
+    "overrides": [],
     "parserOptions": {
         "ecmaVersion": "latest"
     },
     "rules": {
+        "no-console": "off",
+        "import/no-dynamic-require": "off",
+        "global-require": "off"
     }
 }
