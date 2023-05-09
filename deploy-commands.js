@@ -9,7 +9,7 @@ async function deploy() {
   console.log(`Deploying ${commands.size} slash commands.`);
 
   const data = await rest.put(
-    Discord.Routes.applicationGuildCommands(config.applicationId, config.guildId),
+    Discord.Routes.applicationGuildCommands(config.clientId, config.guildId),
     {
       body: commands.map((command) => command.data.toJSON()),
     },
