@@ -11,6 +11,7 @@ function loadCommand(filename) {
 
 loadCommand('./commands/ping.js');
 loadCommand('./commands/secretping.js');
+loadCommand('./commands/cowsay.js');
 loadCommand('./commands/echo.js');
 loadCommand('./commands/guide.js');
 loadCommand('./commands/user.js');
