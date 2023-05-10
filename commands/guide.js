@@ -5,7 +5,7 @@ async function sendChoices(int, content, buttons) {
     .addComponents(...buttons.map((e) => (e.id ? e.button.setCustomId(e.id) : e.button)));
 
   const resp = await int.reply({
-    content,
+    ...content,
     components: [row],
   });
 
@@ -33,14 +33,19 @@ module.exports = {
 
     const fail = (int2) => int2.reply('Oops! You chose the wrong one. Better luck next time.');
 
-    sendChoices(int, 'Choose the first button...', [
+    sendChoices(int, {
+      content: 'Choose the first button...',
+    }, [
       {
         id: 'btn1',
         button: new Discord.ButtonBuilder()
           .setLabel('First')
           .setStyle(Discord.ButtonStyle.Primary),
         callback: (int2) => {
-          sendChoices(int2, 'Now choose the third button...', [
+          sendChoices(int2, {
+            embeds: [new Discord.EmbedBuilder()
+              .setTitle('Now choose the third button...')],
+          }, [
             {
               id: 'btn3',
               button: new Discord.ButtonBuilder()
@@ -61,7 +66,10 @@ module.exports = {
                 .setLabel('C')
                 .setStyle(Discord.ButtonStyle.Primary),
               callback: (int3) => {
-                sendChoices(int3, 'And finally the last button!', [
+                sendChoices(int3, {
+                  embeds: [new Discord.EmbedBuilder()
+                    .setTitle('And finally the last button!')],
+                }, [
                   {
                     id: 'btn7',
                     button: new Discord.ButtonBuilder()
